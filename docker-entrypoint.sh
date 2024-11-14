@@ -5,4 +5,3 @@ envsubst '$INTERNALTEXT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.con
 
 # Executa o Nginx
 exec "$@"
-###
