@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: "INTERNALTEXT", defaultValue: 'olá mundo!', description: "URL da API para o Nginx")
+        string(name: "INTERNALTEXT", defaultValue: 'olá mundo!', description: "Texto para o index.html")
     }
 	  
       stages {
@@ -25,7 +25,7 @@ pipeline {
         stage("Run Docker Container") {
             steps {
                 script {
-                    // Executa o contêiner Docker e passa a variável INTERNALTEXT
+                    // Executa o container Docker e passa a variável INTERNALTEXT
                     sh "docker run --rm -d -p 9001:80 -e INTERNALTEXT='${params.INTERNALTEXT}' custom-nginx"
                 }
             }
