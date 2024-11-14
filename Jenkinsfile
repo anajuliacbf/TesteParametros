@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     // Executa o contêiner Docker e passa a variável INTERNALTEXT
-                    sh "docker run --rm -d -p 9001:80 -e INTERNALTEXT='${params.INTERNALTEXT} custom-nginx"
+                    sh "docker run --rm -d -p 9001:80 -e INTERNALTEXT='${params.INTERNALTEXT}' custom-nginx"
                 }
             }
         }
