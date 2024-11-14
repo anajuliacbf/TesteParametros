@@ -1,22 +1,31 @@
 pipeline {
     agent any
 
-    stages {
-	stage('Checkout') {
+    parameters {
+        string(name: "INTERNALTEXT", description: "URL da API para o Nginx")
+    }
+	  
+      stages {
+       stage("Checkout") {
             steps {
                 // Clona o repositório (SCM está automaticamente configurado pelo Jenkins)
                 checkout scm
             }
         }
-
-        stage('Run Docker') {
+        stage("Build Docker Image") {
             steps {
-                // Chama o script para construir a imagem e rodar o container com o NGINX customizado
                 script {
-                    sh '''
-                    docker build --no-cache -t custom-nginx .
-                    docker run --rm -d -p 9001:80 -e NGINX_CUSTOM_MSG="${INTERNALTEXT}" custom-nginx
-                    '''
+                    // Faz o build da imagem Docker usando o Dockerfile e arquivos
+                    sh "docker build --no-cache -t custom-nginx ."
+                }
+            }
+        }
+
+        stage("Run Docker Container") {
+            steps {
+                script {
+                    // Executa o contêiner Docker e passa a variável INTERNALTEXT
+                    sh "docker run --rm -d -p 9001:80 -e INTERNALTEXT="${INTERNALTEXT}" custom-nginx"
                 }
             }
         }
