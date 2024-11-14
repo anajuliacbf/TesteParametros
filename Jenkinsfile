@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: "INTERNALTEXT", description: "URL da API para o Nginx")
+        string(name: "INTERNALTEXT", defaultValue: 'olá mundo!', description: "URL da API para o Nginx")
     }
 	  
       stages {
