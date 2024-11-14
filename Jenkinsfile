@@ -17,6 +17,7 @@ pipeline {
                 script {
                     // Faz o build da imagem Docker usando o Dockerfile e arquivos
                     sh "docker build --no-cache -t custom-nginx ."
+		    echo "${INTERNALTEXT}"
                 }
             }
         }
