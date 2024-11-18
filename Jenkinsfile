@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: "INTERNALTEXT", defaultValue: 'olá mundo!', description: "Texto para o index.html")
+        string(name: "INTERNALTEXT", defaultValue: 'olá mundo!', description: "Texto customizado para o index.html")
     }
 	  
       stages {
