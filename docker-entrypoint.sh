@@ -11,6 +11,3 @@ cat /usr/share/nginx/html/index.html
 
 # Executa o Nginx
 exec "$@"
-
-
-#!/bin/sh
